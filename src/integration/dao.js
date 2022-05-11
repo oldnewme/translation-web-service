@@ -1,7 +1,6 @@
 const Translation = require('../model/Translation');
 
 const Sequelize = require('sequelize');
-const {where} = require("sequelize");
 
 const DB_NAME = 'translation_db';
 const USER_NAME = 'root';
