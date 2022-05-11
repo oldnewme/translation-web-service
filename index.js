@@ -20,7 +20,11 @@ const findTranslation = (language_id, key, DB) => {
 // routes
 server.get('/translation/:language_id/:key', (req, res) => {
     const {language_id, key} = req.params;
-    res.json(findTranslation(language_id, key, DB));
+    let translation = findTranslation(language_id, key, DB);
+    if(translation){
+        return res.status(200).json(translation);
+    }
+    res.status(400).json('No translation was found');
 })
 
 server.post('/translation', (req, res) => {
