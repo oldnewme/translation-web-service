@@ -7,5 +7,6 @@
 
 ## Provided api routes
 GET /translation/{or at language_id}/{key} => gets translation matching the language_id and key
+
 POST /translation => given a json object with language_id, key and translation it will be persisted in the database
 
