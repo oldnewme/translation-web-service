@@ -7,14 +7,10 @@ let server = express();
 // middleware
 server.use(express.json());
 
-const findTranslation = async (language_id, key) => {
-    return await controller.getTranslation(language_id, key);
-}
-
 // routes
 server.get('/translation/:language_id/:key', async (req, res) => {
     const {language_id, key} = req.params;
-    let translation = await findTranslation(language_id, key);
+    let translation = await controller.getTranslation(language_id, key);
     console.log(translation);
     if (translation) {
         return res.status(200).json(translation);
@@ -50,7 +46,7 @@ server.use((req, res, next) =>{
 });
 
 // other errors
-server.use((error, req, res, next) =>{
+server.use((error, req, res) =>{
     res.status(error.status || 500);
     res.json({
         error:{
